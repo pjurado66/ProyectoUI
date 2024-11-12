@@ -2,7 +2,6 @@ package com.example.proyectoui.scaffold
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AcUnit
@@ -19,10 +18,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import kotlinx.coroutines.Job
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MyTopBar() {
+fun MyTopBar(snackBar: () -> Job) {
     TopAppBar(
         title = {
             Row {
@@ -37,7 +37,7 @@ fun MyTopBar() {
             }
         },
         actions = {
-            IconButton(onClick = {}) {
+            IconButton(onClick = {snackBar()}) {
                 Icon(imageVector = Icons.Default.Add, contentDescription = null)
             }
             IconButton(onClick = {}) {
